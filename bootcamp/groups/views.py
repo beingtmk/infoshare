@@ -15,7 +15,7 @@ class CreateGroupView(LoginRequiredMixin, CreateView):
     model = Group
     message = _("Your article has been created.")
     # form_class = ArticleForm
-    fields = ('name', 'image', 'description', 'members')
+    fields = ('name', 'type', 'image', 'description', 'members')
     template_name = 'groups/group_create.html'
 
     def form_valid(self, form):

@@ -24,6 +24,7 @@ class Group(models.Model):
     questions = models.ManyToManyField(Question, blank=True)
     requests = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='requests', blank=True)
     name = models.CharField(max_length=100, blank=True)
+    type = models.CharField(max_length=100, choices=TYPE, blank=True)
 
 class POR(models.Model):
     group = models.ForeignKey(
