@@ -19,7 +19,7 @@ class ArticleQuerySet(models.query.QuerySet):
 
     def get_published(self):
         """Returns only the published items in the current queryset."""
-        return self.filter(status="P")
+        return self.filter(status="P", secret=False)
 
     def get_drafts(self):
         """Returns only the items marked as DRAFT in the current queryset."""
@@ -61,6 +61,8 @@ class Article(models.Model):
     edited = models.BooleanField(default=False)
     tags = TaggableManager()
     objects = ArticleQuerySet.as_manager()
+    secret = models.BooleanField(default=False)
+
 
     class Meta:
         verbose_name = _("Article")

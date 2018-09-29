@@ -27,6 +27,7 @@ class News(models.Model):
     liked = models.ManyToManyField(settings.AUTH_USER_MODEL,
         blank=True, related_name="liked_news")
     reply = models.BooleanField(verbose_name=_("Is a reply?"), default=False)
+    secret = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = _("News")

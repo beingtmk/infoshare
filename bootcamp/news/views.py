@@ -17,7 +17,7 @@ class NewsListView(LoginRequiredMixin, ListView):
     paginate_by = 15
 
     def get_queryset(self, **kwargs):
-        return News.objects.filter(reply=False)
+        return News.objects.filter(reply=False, secret=False)
 
 
 class NewsDeleteView(LoginRequiredMixin, AuthorRequiredMixin, DeleteView):

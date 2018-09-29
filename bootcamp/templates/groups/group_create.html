@@ -1,0 +1,8 @@
+<form action="{% url 'groups:create' %}" enctype="multipart/form-data"  id="article-form" method="post" role="form">
+  {% csrf_token %}
+  {{ form.as_p}}
+  <div class="form-group">
+    <button type='submit' class="btn btn-primary publish">'Submit'</button>
+  </div>
+</form>
+{{ form.media }}

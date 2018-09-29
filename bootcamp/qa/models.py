@@ -30,6 +30,7 @@ class Vote(models.Model):
         max_length=50, blank=True, null=True)
     vote = GenericForeignKey(
         "content_type", "object_id")
+    secret = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = _("Vote")
@@ -44,12 +45,12 @@ class QuestionQuerySet(models.query.QuerySet):
     def get_answered(self):
         """Returns only items which has been marked as answered in the current
         queryset"""
-        return self.filter(has_answer=True)
+        return self.filter(has_answer=True, secret='False')
 
     def get_unanswered(self):
         """Returns only items which has not been marked as answered in the
         current queryset"""
-        return self.filter(has_answer=False)
+        return self.filter(has_answer=False, secret='False')
 
     def get_counted_tags(self):
         """Returns a dict element with tags and its count to show on the UI."""
