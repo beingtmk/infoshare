@@ -1,4 +1,4 @@
-# infoshare
+# INFOShare
 
 INFOShare has a plethora of ways people can collaborate and share information.
 
