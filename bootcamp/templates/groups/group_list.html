@@ -2,5 +2,6 @@ H!
 {% for group in groups %}
     <a href="{% url 'groups:detail' group.id %}">
       {{forloop.counter}} - {{group.name}}
-    </a><br>
+    </a>br
+    
 {% endfor %}
