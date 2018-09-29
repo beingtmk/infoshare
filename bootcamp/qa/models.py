@@ -30,7 +30,6 @@ class Vote(models.Model):
         max_length=50, blank=True, null=True)
     vote = GenericForeignKey(
         "content_type", "object_id")
-    secret = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = _("Vote")
@@ -88,6 +87,8 @@ class Question(models.Model):
     votes = GenericRelation(Vote)
     tags = TaggableManager()
     objects = QuestionQuerySet.as_manager()
+    secret = models.BooleanField(default=False)
+
 
     class Meta:
         ordering = ["-timestamp"]

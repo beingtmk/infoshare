@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView, CreateView
 from django.contrib import messages
 from django.urls import reverse
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -14,7 +15,7 @@ class CreateGroupView(LoginRequiredMixin, CreateView):
     model = Group
     message = _("Your article has been created.")
     # form_class = ArticleForm
-    fields = '__all__'
+    fields = ('name', 'image', 'description', 'members')
     template_name = 'groups/group_create.html'
 
     def form_valid(self, form):
@@ -38,22 +39,33 @@ class GroupsListView(LoginRequiredMixin, ListView):
 class GroupDetailView(LoginRequiredMixin, DetailView):
     """Basic DetailView implementation to call an individual article."""
     model = Group
-    context_object_name = "group"
     template_name = 'groups/group_detail.html'
+    context_object_name = "group"
 
+    def get_context_data(self, *args, **kwargs):
+        context = super(GroupDetailView, self).get_context_data(**kwargs)
+        group = Group.objects.get(pk = self.kwargs.get('pk'))
+        context['is_joined'] = False
+        print(self.request.user)
+        print(group.members.first)
+        if self.request.user in group.members.all():
+            context['is_joined'] = True
+        print(context['is_joined'])
+        return context
 
 def request_membership(request, pk):
     user = request.user
     group = Group.objects.get(pk=pk)
-    if user in group.members:
-        return False
+    if user in group.requests.all():
+        return HttpResponse('You have already a requested to be part of the group')
     else:
         group.requests.add(user)
-        return True
+        return HttpResponse('Your request has been registered')
 
-def request_handler(request, pk_u, pk_g):
-    user = User.objects.get(pk=pk_u)
-    group = Group.objects.get(pk=pk_g)
+def request_handler(request, pk):
+    user = request.user
+    group = Group.objects.get(pk=pk)
 
     group.requests.remove(user)
     group.members.add(user)
+    return HttpResponse('Your approval has been saved to database')

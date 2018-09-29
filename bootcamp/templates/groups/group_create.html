@@ -1,8 +1,30 @@
-<form action="{% url 'groups:create' %}" enctype="multipart/form-data"  id="article-form" method="post" role="form">
-  {% csrf_token %}
-  {{ form.as_p}}
-  <div class="form-group">
-    <button type='submit' class="btn btn-primary publish">'Submit'</button>
-  </div>
-</form>
-{{ form.media }}
+{% extends 'base.html' %}
+{% load static i18n %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+{% endblock head %}
+
+{% block content %}
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'news:list' %}">{% trans 'Home' %}</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'groups:list' %}">{% trans 'Groups' %}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{% trans 'Create a New Group' %}</li>
+    </ol>
+  </nav>
+  <form action="{% url 'groups:create' %}" enctype="multipart/form-data"  id="article-form" method="post" role="form">
+    {% csrf_token %}
+    {{ form|crispy}}
+    <div class="form-group">
+      <button type='submit' class="btn btn-primary publish">'Submit'</button>
+    </div>
+  </form>
+  {{ form.media }}
+
+{% endblock content %}
+
+{% block modal %}
+  <script src="{% static 'js/articles.js' %}"></script>
+{% endblock modal %}

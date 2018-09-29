@@ -1,1 +1,106 @@
-{{group}}
+{% extends 'base.html' %}
+{% load static i18n %}
+{% load comments crispy_forms_tags thumbnail humanize %}
+
+{% block title %}{{ group.name|title }}{% endblock %}
+
+{% block content %}
+  <!-- Page Content -->
+  <br>
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'news:list' %}">{% trans 'Home' %}</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'groups:list' %}">{% trans 'Groups' %}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ group.name|title }}</li>
+      </ol>
+    </nav>
+    <div class="row">
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
+        <!-- Title -->
+        <h1 class="mt-4">{{ group.name|title }}</h1>
+
+        <!-- Date/Time -->
+        <hr>
+        <!-- Featured Image -->
+        {% thumbnail group.image "900x300" as im %}
+          <img src="{{ im.url }}" alt="{% trans 'Featured Image' %}" class="card-img-top">
+        {% empty %}
+          <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="Card Image">
+        {% endthumbnail %}
+        <!-- <img src="{{ MEDIA_URL }}{{ article.image }}" lt="{% trans 'Featured Image' %}" class="card-img-top"> -->
+        <hr>
+        <!-- Post Content -->
+        <p class="card-text">{{ group.description|safe }}</p>
+        <hr>
+
+
+      </div>
+
+
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
+
+        <!-- Write Article Widget -->
+        {% if request.user.is_authenticated %}
+        <br><br><br><br>
+          <div class="card my-4">
+            <br>
+
+            <h4 class='text-center'> Group Actions : </h4>
+            <div class="card-body text-center">
+              <a class="btn btn-success" href="{% url 'groups:create' %}" title="{% trans 'Create a new group' %}"><i class="fa fa-pencil" aria-hidden="true"></i> {% trans 'New Group' %}</a>
+              <a class="btn btn-success" href="{% url 'news:post_news' %}" title="{% trans 'Add News' %}"><i class="fa fa-pencil" aria-hidden="true"></i> {% trans 'Add News' %}</a>
+
+            </div>
+
+            <div class="card-body text-center">
+              <a class="btn btn-success" href="{% url 'articles:write_new' %}" title="{% trans 'Add Post' %}"><i class="fa fa-pencil" aria-hidden="true"></i> {% trans 'Add Post' %}</a>
+              <a class="btn btn-success" href="qa:ask_question" title="{% trans 'Add a Question' %}"><i class="fa fa-pencil" aria-hidden="true"></i> {% trans 'Add Question' %}</a>
+
+            </div>
+            <br>
+
+            <div class="card-body text-center">
+              {% if is_joined %}
+                <h5>You are a part of this group!</h5>
+              {% else %}
+              <a class="btn btn-success" href="{% url 'groups:request_membership' pk=group.id %}" title="{% trans 'Join Group' %}"><i class="fa fa-pencil" aria-hidden="true"></i> {% trans 'Join Group' %}</a>
+              {% endif %}
+            </div>
+
+          </div>
+        {% endif %}
+
+      </div>
+    <!-- /.row -->
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h4> Members: </h4><hr>
+      <ol>
+        {% for member in group.members.all %}
+        <li>
+          <a href="#">{{member}}</a>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+
+    <div class="col-md-6">
+      <h4> Pending Requests: </h4><hr>
+      <ol>
+        {% for request in group.requests.all %}
+        <li>
+          <a href="{% url 'groups:request_handler' group.pk %}">{{request}}</a> - Approve Me!
+        </li>
+        {% empty %}
+          No pending Requests.
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+  <!-- /.container -->
+{% endblock content %}
