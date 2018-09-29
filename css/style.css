@@ -46,6 +46,17 @@ Table of Content:
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Roboto:300,400,500,700");
 /*---------------------------------------------------- */
 /*----------------------------------------------------*/
+
+#info_sharenav{
+  font-size: 30px;
+  font-family: "Times New Roman", Times, serif;
+  color: #FFF8DC;
+  font-weight: bold;
+  margin-left: 50px;
+
+}
+
+
 .list {
   list-style: none;
   margin: 0px;
