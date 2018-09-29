@@ -23,8 +23,7 @@ Technology Stack
 DEPLOYMENT LOCALLY
 ------------------
 
-Make sure to have the following on your host:
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+### Make sure to have the following on your host:
 
 * virtualenv
 
@@ -35,8 +34,8 @@ Make sure to have the following on your host:
 * libpq-dev
     $ sudo apt-get libpq-dev
 
-Follow these steps to get it running on your machine:
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+### Follow these steps to get it running on your machine:
+
 * clone the repository
     
     $ git clone https://github.com/beingtmk/infoshare.git
@@ -92,4 +91,4 @@ Follow these steps to get it running on your machine:
     $ python manage.py runserver 8000
 
 
- # The Server will be deployed at 127.0.0.1:8000
+ ## The Server will be deployed at 127.0.0.1:8000
