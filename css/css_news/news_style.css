@@ -297,7 +297,7 @@ section
 }
 .cat_technology
 {
-	background: #624693 !important;
+	background: #ff2a98 !important;
 }
 .cat_world
 {
@@ -1180,7 +1180,7 @@ section
 	width: 100%;
 	height: 126px;
 	margin-top: 63px;
-	background: #eceaf3;
+	background: #f8e5f4;
 	padding-left: 36px;
 }
 .post_share_title
@@ -1376,8 +1376,8 @@ section
 {
 	width: 136px;
 	height: 51px;
-	background: #61e49b;
-	color: #FFFFFF;
+	background: #ffb9f7;
+	color: #F20B55;
 	font-size: 12px;
 	font-weight: bold;
 	text-transform: uppercase;
@@ -1388,7 +1388,7 @@ section
 }
 .reply_button:hover
 {
-	background: #624693;
+	background: #e717a0;
 }
 
 /*********************************

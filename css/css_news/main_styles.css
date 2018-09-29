@@ -24,28 +24,7 @@
 1. Fonts
 ***********/
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
-@font-face
-{
-	font-family: 'HelveticaNeueLTPro';
-	src: url('../fonts/HelveticaNeueLTPro-Bd.eot'); /* IE9 Compat Modes */
-  	src: url('../fonts/HelveticaNeueLTPro-Bd.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-		url('../fonts/HelveticaNeueLTPro-Bd.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/HelveticaNeueLTPro-Bd.woff') format('woff'), /* Pretty Modern Browsers */
-		url('../fonts/HelveticaNeueLTPro-Bd.ttf')  format('truetype'); /* Safari, Android, iOS */
-	font-weight: bold;
-}
-
-@font-face
-{
-	font-family: 'HelveticaNeueLTPro';
-	src: url('../fonts/HelveticaNeueLTPro-Md.eot'); /* IE9 Compat Modes */
-  	src: url('../fonts/HelveticaNeueLTPro-Md.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-		url('../fonts/HelveticaNeueLTPro-Md.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/HelveticaNeueLTPro-Md.woff') format('woff'), /* Pretty Modern Browsers */
-		url('../fonts/HelveticaNeueLTPro-Md.ttf')  format('truetype'); /* Safari, Android, iOS */
-	font-weight: normal;
-}
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Roboto:300,400,500,700");
 
 /*********************************
 2. Body and some general stuff
@@ -61,11 +40,11 @@
 }
 body
 {
-	font-family: 'HelveticaNeueLTPro', sans-serif;
-	font-size: 14px;
-	font-weight: normal;
-	background: #FFFFFF;
-	color: #000000;
+	line-height: 24px;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  color: #777777;
 }
 div
 {
@@ -84,7 +63,7 @@ p
 {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
-	line-height: 2.14;
+	line-height: 24px;
 	font-weight: 400;
 	color: #878787;
 	-webkit-font-smoothing: antialiased;
@@ -144,11 +123,8 @@ h4{font-size: 18px;}
 h5{font-size: 14px;}
 h1, h2, h3, h4, h5, h6
 {
-	font-family: 'Open Sans', sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
-	text-shadow: rgba(0,0,0,.01) 0 0 1px;
-	line-height: 1.2;
+	font-family: "Roboto", sans-serif;
+    font-weight: 500;
 }
 h1::selection, 
 h2::selection, 
@@ -277,7 +253,8 @@ section
 }
 .section_title
 {
-	font-size: 36px;
+	padding-top: 60px;
+    font-size: 36px;
 	font-weight: bold;
 	line-height: 0.75;
 	color: #000000;
@@ -293,22 +270,24 @@ section
 }
 .section_bar
 {
-	width: 100%;
-	height: 26px;
-	background: #ebeded;
-	margin-top: 1px;
+	padding-top: 40px;
+    padding-bottom: 20px;
+    width: 100%;
+	height: 60px;
+	background: #b2b4b4;
+	margin-top: 50px;
 }
 .cat_technology
 {
-	background: #624693 !important;
+	background: #ff1fa0 !important;
 }
 .cat_world
 {
-	background: #61e49b !important;
+	background: #ff1fa0 !important;
 }
 .cat_video
 {
-	background: #ff4b75 !important;
+	background: #ff1fa0 !important;
 }
 .cat_party
 {
@@ -1242,7 +1221,7 @@ section
 }
 .post_category a
 {
-	display: block;
+	display: inline-block;
 	font-size: 11px;
 	text-transform: uppercase;
 	letter-spacing: 0.35em;
@@ -1268,7 +1247,7 @@ section
 .post_h_large .post_title a,
 .post_v_med .post_title a
 {
-	font-size: 30px;
+	font-size: 24px;
 	color: #000000;
 	line-height: 1.2;
 }
@@ -1325,7 +1304,7 @@ section
 .post_date a
 {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 12px;
+	font-size: 14px;
 	font-weight: 600;
 	color: #838383;
 	-webkit-transition: all 200ms ease;
@@ -1376,7 +1355,7 @@ section
 }
 .post_text
 {
-	margin-top: 29px;
+	margin-top: 15px;
 }
 
 /*********************************
